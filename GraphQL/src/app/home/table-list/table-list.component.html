@@ -1,0 +1,36 @@
+<div class="table">
+    <div class="tableItem" *ngFor="let item of pagedItems">
+        <div class="tableItemTitle">
+            <h3>{{item.name}} →</h3>
+        </div>
+        <div class="tableItemContext">
+            <div class="type">
+                <p class="typeTitle">
+                    Тип
+                </p>
+                <p class="typeContent">{{item.type}}</p>
+            </div>
+            <div class="port">
+                <p class="portTitle">Порт</p>
+                <p class="portContent">{{item.home_port}}</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<div *ngIf="pagePag.endPage" class="pagination">
+
+    <span class="pagination-button" [ngClass]="{disabled:pagePag.currentPage === 1}"
+        (click)="setPage(pagePag.currentPage - 1)">
+        ⯇
+    </span>
+    <div>
+        <p class="pagination-number">{{pagePag.currentPage}}</p>
+    </div>
+    <span class="pagination-button" [ngClass]="{disabled:pagePag.currentPage === pagePag.endPage}"
+        (click)="setPage(pagePag.currentPage + 1)">
+        ⯈
+    </span>
+
+</div>

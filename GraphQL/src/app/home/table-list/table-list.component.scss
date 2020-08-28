@@ -1,0 +1,59 @@
+.table {
+    margin-top: 4rem;
+
+    .tableItem {
+        height: 6.5rem;
+        margin-top: 1rem;
+    }
+
+    .tableItemTitle,
+    .tableItemContext,
+    .type,
+    .port,
+    .pagination {
+        display: flex;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin: 0;
+    }
+
+    .type {
+        width: 30%;
+    }
+
+    .typeTitle,
+    .portTitle {
+        width: 6.5rem;
+    }
+
+    .typeContent,
+    .portContent {
+        color: #2962ff;
+    }
+
+    .tableItemContext {
+        margin-top: 0.8rem;
+    }
+}
+
+.pagination {
+    align-items: center;
+    display: flex;
+    margin-top: 2rem;
+
+    &-button {
+        cursor: pointer;
+    }
+
+    &-number {
+        font-weight: 500;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    .disabled {
+        color: rgb(163, 163, 163);
+        cursor: default;
+    }
+}
