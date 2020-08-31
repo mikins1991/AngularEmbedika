@@ -1,16 +1,17 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { PaginHelper } from './pagin.helper';
+import { PaginHelper } from '../helpers/pagin.helper';
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'table-list',
     templateUrl: './table-list.component.html',
     styleUrls: [ './table-list.component.scss' ]
 })
 export class TableListComponent implements OnInit, OnChanges {
     @Input() data: any;
+    @Input() searchValue: string;
 
     constructor() {}
-
     pagePag: any = {};
     pagedItems: any[];
 

@@ -1,5 +1,5 @@
 <div class="table">
-    <div class="tableItem" *ngFor="let item of pagedItems">
+    <div class="tableItem" *ngFor="let item of (pagedItems | searchName:searchValue)">
         <div class="tableItemTitle">
             <h3>{{item.name}} →</h3>
         </div>
@@ -17,6 +17,10 @@
         </div>
         <hr>
     </div>
+</div>
+
+<div *ngIf="(pagedItems | searchName:searchValue).length < 1">
+    Not Found
 </div>
 
 <div *ngIf="pagePag.endPage" class="pagination">

@@ -1,0 +1,19 @@
+<div class="filter">
+
+    <h2>Фильтры</h2>
+    <label *ngIf="labelName">Название</label>
+    <input class='input' type="search" placeholder="Название" (keyup)="onSearchCustomer($event.target.value)">
+    <div class="select-port">
+        <label>Порт</label>
+        <input class='input' type="select" aria-label="Порт" (click)="suggest()" placeholder="Выбрано {{checkValue}}">
+        <div class="items" *ngIf="show">
+            <div class="item" *ngFor="let port of portCheck">
+                <input class="checkbox" type="checkbox" id="port.name" name="port.name"
+                    (change)="onChange(port.name, $event.target.checked)" [checked]="port.checked === true">
+                {{ port.name }}
+            </div>
+        </div>
+    </div>
+
+
+</div>

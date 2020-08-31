@@ -4,7 +4,7 @@
             SpaceX Ships
         </h1>
         <ng-container *ngIf="!loading; else loadSpinner">
-            <table-list [data]="data.ships"></table-list>
+            <table-list [data]="dataFilter" [searchValue]="searchValue"></table-list>
         </ng-container>
         <ng-template #loadSpinner>
             <p>Loading...</p>
@@ -12,7 +12,7 @@
 
 
     </div>
-    <div class="filter">
-        <h2>Фильтры</h2>
-    </div>
+    <filters class="filter" [dataPort]="dataPort" (search)="onSearch($event)" (checkPort)="onCheckPort($event)">
+
+    </filters>
 </div>
