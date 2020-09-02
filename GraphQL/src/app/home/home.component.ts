@@ -4,7 +4,6 @@ import gql from 'graphql-tag';
 import { UniqueHelper } from './helpers/unique.helper';
 import { Data } from './interface';
 import { FilterHelper } from './helpers/filter.helper';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',

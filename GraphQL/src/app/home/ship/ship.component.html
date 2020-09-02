@@ -1,1 +1,53 @@
-<p>ship works!</p>
+<div class="container">
+    <div class="main">
+        <h3 (click)="goToHome()"> ← Вернуться </h3>
+
+        <!-- <table-list [data]="dataFilter" [searchValue]="searchValue"></table-list> -->
+        <ng-container *ngIf="!loading; else loadSpinner">
+            <h1 class="title">
+                {{ship.name}}
+            </h1>
+            <div class="table">
+                <div class="tableItemContext">
+                    <div class="type">
+                        <p class="typeTitle">
+                            Тип
+                        </p>
+                        <p class="typeContent">{{ship.type}}</p>
+                    </div>
+                    <div class="port">
+                        <p class="portTitle">Порт</p>
+                        <p class="portContent">{{ship.home_port}}</p>
+                    </div>
+                </div>
+                <div class="tableItemContext">
+                    <div class="type">
+                        <p class="typeTitle">
+                            Вес
+                        </p>
+                        <p class="typeContent">{{ship.weight_kg}}</p>
+                    </div>
+                    <div class="port">
+                        <p class="portTitle">Год</p>
+                        <p class="portContent">{{ship.year_built}}</p>
+                    </div>
+                </div>
+                <div class="tablemissions">
+                    <p class="missionsTitle">
+                        Миссии
+                    </p>
+                    <div class="missions">
+                        <p class="mission">{{missionsStr}}, </p>
+                    </div>
+
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #loadSpinner>
+            <p>Loading...</p>
+        </ng-template>
+
+
+
+    </div>
+</div>

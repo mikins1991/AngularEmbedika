@@ -1,0 +1,70 @@
+.container {
+    // display: grid;
+    height: 100vh;
+
+    .main {
+        background-color: #fafafa;
+        padding: 3.25rem 4rem;
+        height: 100vh;
+
+        h1 {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 28px;
+        }
+        h3 {
+            font-size: 14px;
+            color: #2962ff;
+            font-weight: normal;
+        }
+
+        .title {
+            font-size: 1.75rem;
+            font-weight: 500;
+        }
+        .table {
+            margin-top: 4rem;
+            max-width: 50rem;
+            .tableItem {
+                height: 6.5rem;
+                margin-top: 1rem;
+            }
+
+            .tableItemTitle,
+            .tableItemContext,
+            .type,
+            .port,
+            .pagination {
+                display: flex;
+            }
+
+            h3 {
+                font-size: 1.25rem;
+                margin: 0;
+            }
+
+            .type {
+                width: 30%;
+            }
+
+            .typeTitle,
+            .portTitle {
+                width: 6.5rem;
+            }
+
+            .typeContent,
+            .portContent {
+                color: #2962ff;
+            }
+
+            .tableItemContext {
+                margin-top: 0.8rem;
+            }
+        }
+
+        .missions {
+            display: flex;
+            color: #2962ff;
+        }
+    }
+}
