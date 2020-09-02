@@ -1,7 +1,8 @@
 <div class="table">
     <div class="tableItem" *ngFor="let item of (pagedItems | searchName:searchValue)">
         <div class="tableItemTitle">
-            <h3>{{item.name}} →</h3>
+            <h3>{{item.name}} <a [routerLink]="['/home-page', item.id]" [routerLinkActiveOptions]="{ exact: true }"
+                    routerLinkActive="active">→</a></h3>
         </div>
         <div class="tableItemContext">
             <div class="type">

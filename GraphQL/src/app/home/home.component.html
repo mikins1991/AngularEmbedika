@@ -12,7 +12,8 @@
 
 
     </div>
-    <filters class="filter" [dataPort]="dataPort" (search)="onSearch($event)" (checkPort)="onCheckPort($event)">
+    <filters class="filter" [dataPort]="dataSortPort" [dataSortType]='dataSortType' (search)="onSearch($event)"
+        (checkPort)="onCheckPort($event)" (checkType)="onCheckType($event)">
 
     </filters>
 </div>

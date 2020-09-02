@@ -6,19 +6,12 @@ import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
+import { HomeRoutingModule } from './home/home-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    GraphQLModule,
-    HttpClientModule,
-    HomeModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [ AppComponent ],
+    imports: [ BrowserModule, AppRoutingModule, GraphQLModule, HttpClientModule, HomeModule, HomeRoutingModule ],
+    providers: [],
+    bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}

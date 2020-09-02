@@ -8,16 +8,25 @@ import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChange
 })
 export class FiltersComponent implements OnInit, OnChanges {
     @Input() dataPort;
+    @Input() dataSortType: string[];
     @Output() search = new EventEmitter<string>();
-    @Output() checkPort = new EventEmitter<string[]>();
+    @Output() checkPort = new EventEmitter<string>();
+    @Output() checkType = new EventEmitter<string>();
 
     checkValue: number;
     show: boolean;
     portCheck: { name: string; checked: boolean }[] = [];
-    labelName: boolean;
+    portValue: string;
+    label = {
+        filter: 'Фильтры',
+        name: 'Название',
+        port: 'Порт',
+        type: 'Тип'
+    };
+    unitTrustsPnl: string;
     constructor() {}
 
-    onChange(name: string, isChecked: boolean) {
+    onCheckboxChange(name: string, isChecked: boolean): void {
         this.portCheck.map((item) => {
             if (item.name === name) {
                 item.checked = isChecked;
@@ -33,12 +42,18 @@ export class FiltersComponent implements OnInit, OnChanges {
             this.dataPort.splice(index, 1);
             this.checkValue -= 1;
         }
+        this.portValue = this.checkValue > 0 ? `Выбрано ${this.checkValue}` : '';
+
         this.checkPort.emit(this.dataPort);
+    }
+
+    onRadioChange(item): void {
+        this.checkType.emit(item);
+        console.log('FiltersComponent -> onRadioChange -> item', item);
     }
 
     onSearchCustomer(event): void {
         this.search.emit(event);
-        this.labelName = event.length > 0;
     }
 
     suggest(): void {
@@ -49,6 +64,10 @@ export class FiltersComponent implements OnInit, OnChanges {
         if (changes.dataPort && changes.dataPort.currentValue) {
             this.portCheck = this.dataPort.map((elem) => (elem = { name: elem, checked: true }));
             this.checkValue = this.portCheck.length;
+            this.portValue = this.checkValue > 0 ? `Выбрано ${this.checkValue}` : '';
+        }
+        if (changes.dataSortType && changes.dataSortType.currentValue) {
+            this.unitTrustsPnl = this.dataSortType[0];
         }
     }
 
