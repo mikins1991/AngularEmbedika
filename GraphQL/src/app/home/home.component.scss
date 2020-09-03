@@ -1,0 +1,23 @@
+.container {
+    display: grid;
+    grid-template-areas: "main filter";
+    height: 100vh;
+    grid-template-columns: 1fr 394px;
+
+    .main {
+        grid-area: main;
+        background-color: #fafafa;
+        padding: 3.25rem 4rem;
+
+        .title {
+            font-size: 1.75rem;
+            font-weight: 500;
+        }
+    }
+
+    .filter {
+        grid-area: filter;
+        border-left: 1px solid #a5a5a5;
+        padding: 3.25rem 2rem;
+    }
+}

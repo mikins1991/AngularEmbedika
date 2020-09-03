@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="main">
+        <h1 class="title">
+            SpaceX Ships
+        </h1>
+        <ng-container *ngIf="!loading; else loadSpinner">
+            <table-list [data]="dataFilter" [searchValue]="searchValue"></table-list>
+        </ng-container>
+        <ng-template #loadSpinner>
+            <p>Loading...</p>
+        </ng-template>
+
+
+    </div>
+    <filters class="filter" [dataPort]="dataSortPort" [dataSortType]='dataSortType' (search)="onSearch($event)"
+        (checkPort)="onCheckPort($event)" (checkType)="onCheckType($event)">
+
+    </filters>
+</div>

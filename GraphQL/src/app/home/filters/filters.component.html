@@ -1,0 +1,39 @@
+<div class="filter">
+
+    <h2>{{label.filter}}</h2>
+    <div class="field">
+        <input class='input' type="search" name="name" id="name" placeholder=" "
+            (keyup)="onSearchCustomer($event.target.value)">
+        <label class='label' for="name">{{label.name}}</label>
+    </div>
+    <div class="select-port">
+        <div class="field">
+
+            <input class='input' type="select" name="port" id="port" (click)="suggest()" placeholder=" "
+                value="{{portValue}}">
+            <label class='label' for="port">{{label.port}}</label>
+            <div class="items" *ngIf="show">
+                <div class="item" *ngFor="let port of portCheck">
+                    <input class="checkbox" type="checkbox" id="port.name" name="port.name"
+                        (change)="onCheckboxChange(port.name, $event.target.checked)" [checked]="port.checked === true">
+                    {{ port.name }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="radio-type">
+        <label class="radio-type-label">{{label.type}}</label>
+        <div class="radio-type-items">
+
+            <div *ngFor="let item of dataSortType" class="radio-type-items-item">
+                <input type="radio" name="unitTrusts-pnl" id="item" class="radio" [(ngModel)]="unitTrustsPnl"
+                    value="{{item}}" (change)="onRadioChange(item)">
+                {{item}}
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
