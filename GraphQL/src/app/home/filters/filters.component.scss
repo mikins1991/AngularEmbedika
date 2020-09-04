@@ -117,4 +117,14 @@ $input-focus-color: #347cff;
             }
         }
     }
+
+    .info{
+        margin-top: 15rem;
+        &-content{
+            display: flex;
+        }
+        &-name{
+            margin-left: 0.5rem;
+        }
+    }
 }
