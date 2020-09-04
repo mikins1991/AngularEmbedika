@@ -27,8 +27,8 @@
         <div class="radio-type-items">
 
             <div *ngFor="let item of dataSortType" class="radio-type-items-item">
-                <input type="radio" name="unitTrusts-pnl" id="item" class="radio" [(ngModel)]="unitTrustsPnl"
-                    value="{{item}}" (change)="onRadioChange(item)">
+                <input type="radio" name="type" id="item" class="radio" [(ngModel)]="activeType" value="{{item}}"
+                    (change)="onRadioChange(item)">
                 {{item}}
             </div>
         </div>

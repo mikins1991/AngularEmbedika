@@ -15,7 +15,14 @@ export class ShipComponent implements OnInit {
     error: any;
     id: string;
     missionsStr = '';
-
+    label = {
+        name: 'Название',
+        port: 'Порт',
+        type: 'Тип',
+        weight: 'Вес',
+        year: 'Год',
+        missions: 'Миссии'
+    };
     constructor(private route: ActivatedRoute, private router: Router, private apollo: Apollo) {}
 
     goToHome() {
@@ -47,7 +54,6 @@ export class ShipComponent implements OnInit {
                 this.error = errors;
                 this.loading = loading;
                 this.ship.missions.forEach((el) => (this.missionsStr += el.name + ', '));
-                console.log('ShipComponent -> constructor -> this.missionsStr', this.missionsStr);
             });
     }
 }

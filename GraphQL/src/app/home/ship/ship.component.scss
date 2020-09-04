@@ -1,3 +1,5 @@
+$text-context-color: #2962ff;
+
 .container {
     // display: grid;
     height: 100vh;
@@ -14,8 +16,9 @@
         }
         h3 {
             font-size: 14px;
-            color: #2962ff;
+            color: $text-context-color;
             font-weight: normal;
+            cursor: pointer;
         }
 
         .title {
@@ -48,13 +51,16 @@
             }
 
             .typeTitle,
-            .portTitle {
+            .portTitle,
+            .missionsTitle {
                 width: 6.5rem;
+                color:  rgba(0, 0, 0, 0.87);
+                font-size: 1rem;
             }
 
             .typeContent,
             .portContent {
-                color: #2962ff;
+                color: $text-context-color;
             }
 
             .tableItemContext {
@@ -64,7 +70,7 @@
 
         .missions {
             display: flex;
-            color: #2962ff;
+            color: $text-context-color;
         }
     }
 }
