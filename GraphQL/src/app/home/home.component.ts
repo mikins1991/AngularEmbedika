@@ -50,7 +50,6 @@ export class HomeComponent implements OnInit {
     onCheckType(event: string): void {
         this.persistFilterType(event, 'type');
         this.activeFilterType = this.restoreFilterType('type');
-        console.log("HomeComponent -> onCheckType -> this.filterType", this.activeFilterType)
         this.dataFilter = FilterHelper.getFiterData(this.data.ships, this.activeFilterPort, this.activeFilterType);
     }
 
@@ -70,20 +69,19 @@ export class HomeComponent implements OnInit {
             .valueChanges.subscribe(({ data, errors, loading }) => {
                 this.data = data;
                 this.dataSortPort = UniqueHelper.getUniquePort(this.data.ships, 'home_port');
-                this.activeFilterPort = this.restoreFilterType('filterPort')
+                this.activeFilterPort = this.restoreFilterType('filterPort');
                 this.dataSortType = UniqueHelper.getUniquePort(this.data.ships, 'type');
-                this.activeFilterType = this.restoreFilterType('type')
-       
+                this.activeFilterType = this.restoreFilterType('type');
                 this.error = errors;
                 this.loading = loading;
 
                 if (this.activeFilterPort) {
                     this.dataFilter = FilterHelper.getFiterData(this.data.ships, this.activeFilterPort, this.activeFilterType);
-                    return
+                    return;
                 }else {
                 this.persistFilterType(this.dataSortType[0], 'type');
-                    this.onCheckPort(this.dataSortPort)
-                };
+                this.onCheckPort(this.dataSortPort);
+                }
             });
     }
 }

@@ -26,7 +26,6 @@ export class TableListComponent implements OnInit, OnChanges {
 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.data && changes.data.currentValue) {
-            console.log("TableListComponent -> ngOnChanges -> data", this.data)
             this.setPage(1);
         }
     }

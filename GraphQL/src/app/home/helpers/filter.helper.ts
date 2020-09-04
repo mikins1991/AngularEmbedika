@@ -2,7 +2,7 @@ import { DataShip } from '../interface';
 
 export class FilterHelper {
     static getFiterData(data: DataShip[], filterPort: string[], filterType: string): DataShip[] {
-        let dataFilter: DataShip[] = [];
+        const dataFilter: DataShip[] = [];
 
         filterPort.forEach((item) => {
             data.forEach((elem) => {

@@ -30,8 +30,6 @@ export class ShipComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('ShipComponent -> constructor -> this.loading', this.loading);
-
         this.route.paramMap.subscribe((params) => (this.id = params.get('id')));
         this.apollo
             .watchQuery({
