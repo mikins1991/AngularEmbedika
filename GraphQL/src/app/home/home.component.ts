@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { UniqueHelper } from './helpers/unique.helper';
 import { Data } from './interface';
 import { FilterHelper } from './helpers/filter.helper';
+import { strict } from 'assert';
 
 @Component({
     selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
     searchValue: string;
     dataFilter: any = [];
     filterType: string;
-    filterPort: string[];
+    activeFilterPort: string[];
+    activeFilterType: string;
     readonly GET_ROCKETS_SHIPS = gql`
         {
             ships {
@@ -40,13 +42,23 @@ export class HomeComponent implements OnInit {
     }
 
     onCheckPort(items: string[]): void {
-        this.filterPort = items;
-        this.dataFilter = FilterHelper.getFiterData(this.data.ships, this.filterPort, this.filterType);
+        this.persistFilterType(items, 'filterPort');
+        this.activeFilterPort = this.restoreFilterType('filterPort');
+        this.dataFilter = FilterHelper.getFiterData(this.data.ships, this.activeFilterPort, this.activeFilterType);
     }
 
     onCheckType(event: string): void {
-        this.filterType = event;
-        this.dataFilter = FilterHelper.getFiterData(this.data.ships, this.filterPort, this.filterType);
+        this.persistFilterType(event, 'type');
+        this.activeFilterType = this.restoreFilterType('type');
+        this.dataFilter = FilterHelper.getFiterData(this.data.ships, this.activeFilterPort, this.activeFilterType);
+    }
+
+    persistFilterType(type: string|string[], name: string) {
+        sessionStorage.setItem(name, JSON.stringify(type));
+    }
+
+    restoreFilterType(name: string) {
+        return JSON.parse(sessionStorage.getItem(name));
     }
 
     ngOnInit() {
@@ -57,11 +69,19 @@ export class HomeComponent implements OnInit {
             .valueChanges.subscribe(({ data, errors, loading }) => {
                 this.data = data;
                 this.dataSortPort = UniqueHelper.getUniquePort(this.data.ships, 'home_port');
+                this.activeFilterPort = this.restoreFilterType('filterPort');
                 this.dataSortType = UniqueHelper.getUniquePort(this.data.ships, 'type');
-                this.filterType = this.dataSortType[0];
-                this.onCheckPort(this.dataSortPort);
+                this.activeFilterType = this.restoreFilterType('type');
                 this.error = errors;
                 this.loading = loading;
+
+                if (this.activeFilterPort) {
+                    this.dataFilter = FilterHelper.getFiterData(this.data.ships, this.activeFilterPort, this.activeFilterType);
+                    return;
+                }else {
+                this.persistFilterType(this.dataSortType[0], 'type');
+                this.onCheckPort(this.dataSortPort);
+                }
             });
     }
 }
